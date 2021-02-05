@@ -39,7 +39,8 @@ const FORM_BUILDER_METHODS = {
             let sectionObject = createNewSection(sectionType, newSortOrder)
 
             // we have to push it from $set otherwise it will not reactive (LOL)
-            this.$set(this.formData.sections, sectionObject.uniqueId, sectionObject)
+            /// this.$set(this.formData.sections, sectionObject.uniqueId, sectionObject)
+            this.formData.sections[sectionObject.uniqueId] = sectionObject
             this.doSortSection()
         },
 

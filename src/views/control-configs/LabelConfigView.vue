@@ -112,7 +112,8 @@
             }
         },
 
-        beforeDestroy() {
+      /// beforeDestroy() {
+        beforeUnmount() {
             this.clearAllMapped()
         }
     }

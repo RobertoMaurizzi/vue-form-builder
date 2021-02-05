@@ -49,8 +49,10 @@ const FORM_BUILDER_EVENT_HANDLER = {
             let preSection = HELPER.find(this.formData.sections, "sortOrder", preSectionOrder)
 
             // swap now
-            this.$set(this.formData.sections[sectionObj.uniqueId], 'sortOrder', preSectionOrder)
-            this.$set(this.formData.sections[preSection.uniqueId], 'sortOrder', postSortOrder)
+            /// this.$set(this.formData.sections[sectionObj.uniqueId], 'sortOrder', preSectionOrder)
+            this.formData.sections[sectionObj.uniqueId].sortOrder = preSectionOrder
+            /// this.$set(this.formData.sections[preSection.uniqueId], 'sortOrder', postSortOrder)
+            this.formData.sections[preSection.uniqueId].sortOrder = postSortOrder
 
             // Sort Again After Swapped Order
             this.doSortSection()
@@ -127,7 +129,8 @@ const FORM_BUILDER_EVENT_HANDLER = {
          */
         controlNewAdded(sectionId, controlObj) {
             // add into big list
-            this.$set(this.formData.controls, controlObj.uniqueId, controlObj)
+            /// this.$set(this.formData.controls, controlObj.uniqueId, controlObj)
+            this.formData.controls[controlObj.uniqueId] = controlObj
 
             // add controlID to section
             this.formData.sections[sectionId].controls.push(controlObj.uniqueId)

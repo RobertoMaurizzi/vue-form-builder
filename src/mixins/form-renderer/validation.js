@@ -13,7 +13,8 @@ const VALIDATION_MIXIN = {
          */
         runValidation() {
             // always clear validation before run...
-            this.$set(this, 'validationErrors', {})
+            /// this.$set(this, 'validationErrors', {})
+            this.validationErrors = {}
 
             // run the validation
             const result = this.$form.Validation.run()
@@ -21,7 +22,8 @@ const VALIDATION_MIXIN = {
             // field-error handling
             if (result.errors()) {
                 // use set for reactive...
-                this.$set(this, 'validationErrors', result.errorBuckets)
+                /// this.$set(this, 'validationErrors', result.errorBuckets)
+                this.validationErrors = result.errorBuckets
 
                 if (this.$form.validationErrorShowAlert) {
                     ALERT_DIALOG.show(this.$form.validationErrorAlertText)

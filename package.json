@@ -20,13 +20,14 @@
     "dayjs": "^1.8.28",
     "deep-equal": "^2.0.3",
     "litepicker": "^1.4.6",
-    "vue": "^3.0.0-beta.1",
-    "vuedraggable": "^2.23.2"
+    "mitt": "^2.1.0",
+    "vue": "^3.0.5",
+    "vuedraggable": "^4.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.10",
-    "@vue/cli-service": "^4.5.10",
-    "@vue/compiler-sfc": "^3.0.0-beta.1",
+    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/cli-plugin-babel": "^4.5.11",
+    "@vue/cli-service": "^4.5.11",
     "babel-eslint": "^10.0.1",
     "cross-env": "^7.0.2",
     "eslint": "^5.16.0",

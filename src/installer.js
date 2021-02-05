@@ -1,12 +1,16 @@
-import {FormIcon} from "@/libraries/icon-facade";
-import FormBuilder from "@/components/FormBuilder";
-import FormRenderer from "@/components/FormRenderer";
-import {CONTROLS} from "@/configs/controls";
-import {STYLES} from "@/configs/styles";
-import {VALIDATION_RULES} from "@/configs/validation";
+import {FormIcon} from "@/libraries/icon-facade"
+import FormBuilder from "@/components/FormBuilder"
+import FormRenderer from "@/components/FormRenderer"
+import {CONTROLS} from "@/configs/controls"
+import {STYLES} from "@/configs/styles"
+import {VALIDATION_RULES} from "@/configs/validation"
+import mitt from 'mitt'
+
+export {VueFormBuilderInstaller}
+
 
 const VueFormBuilderInstaller = function(
-    Vue,
+    app_,
     properties = {
         globalInjection : true,
         validationErrorShowAlert: true,
@@ -16,6 +20,8 @@ const VueFormBuilderInstaller = function(
     if (VueFormBuilderInstaller.installed) {
         return
     }
+
+    var app = app_
 
     // DI for Form-Builder
     const formDI = {
@@ -47,17 +53,25 @@ const VueFormBuilderInstaller = function(
     formDI.validationErrorAlertText = properties.validationErrorAlertText
 
     // For Event-Bus purpose
-    Vue.prototype.$formEvent = new Vue()
-    Vue.prototype.$form = formDI
+    // Vue.prototype.$formEvent = new Vue()
+    // Vue.prototype.$form = formDI
+    const myEmitter = mitt()
+    myEmitter.$on = myEmitter.on
+    myEmitter.$emit = myEmitter.emit
+    app.config.globalProperties.$formEvent = myEmitter
+    app.config.globalProperties.$form = formDI
 
     // Register Form-Components
     if (!properties.hasOwnProperty('globalInjection') || properties.globalInjection) {
-        Vue.component('FormBuilder', FormBuilder);
-        Vue.component('FormRenderer', FormRenderer);
+        app.component('FormBuilder', FormBuilder);
+        app.component('FormRenderer', FormRenderer);
     }
 
     // Mark as registered
     VueFormBuilderInstaller.installed = true;
+
+    /// FIXME add whatever global Symbol we need here, if any
+    // app.provide(VueToastedSymbol, Toast);
 }
 
 /**
@@ -98,8 +112,4 @@ const extendingValidations = function (validationObj) {
 
     // eligible to extend now
     Object.assign(VALIDATION_RULES, validationObj)
-}
-
-export  {
-    VueFormBuilderInstaller
 }

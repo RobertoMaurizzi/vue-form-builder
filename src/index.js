@@ -17,11 +17,11 @@ const VueFormBuilderPlugin = {
 // - Configure the Internal Configuration of the Form
 // - Extendable (Registering more controls, Styling Classes,...)
 // - ...
-if (typeof window !== 'undefined') {
-    window.VueFormBuilderPlugin = VueFormBuilderPlugin
-} else if (typeof global !== 'undefined') {
-    global.VueFormBuilderPlugin = VueFormBuilderPlugin
-}
+/// if (typeof window !== 'undefined') {
+///     window.VueFormBuilderPlugin = VueFormBuilderPlugin
+/// } else if (typeof global !== 'undefined') {
+///     global.VueFormBuilderPlugin = VueFormBuilderPlugin
+/// }
 
 export {
     VueFormBuilderPlugin,

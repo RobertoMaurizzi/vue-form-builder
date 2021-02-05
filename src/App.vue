@@ -155,7 +155,22 @@
             setRandomData() {
                 const faker = require('faker');
 
-                this.$set(this, 'formInputData', {
+                ///
+                /* this.$set(this, 'formInputData', { */
+                /*     "name": faker.name.findName(), */
+                /*     "brief-description": faker.company.companyName(), */
+                /*     "long-description": faker.lorem.paragraphs(), */
+                /*     "user_email": faker.internet.email(), */
+                /*     "is_deletable": faker.random.number({min: 0, max:1}), */
+                /*     "doc_props": [""+faker.random.number({min: 1, max:3})], */
+                /*     "doc_date": faker.date.past(), */
+                /*     "doc-process-range": { */
+                /*         startDate: faker.date.past(), */
+                /*         endDate: faker.date.future(), */
+                /*     }, */
+                /*     "total_value": faker.finance.amount() */
+                /* }); */
+                this.formInputData = {
                     "name": faker.name.findName(),
                     "brief-description": faker.company.companyName(),
                     "long-description": faker.lorem.paragraphs(),
@@ -168,7 +183,7 @@
                         endDate: faker.date.future(),
                     },
                     "total_value": faker.finance.amount()
-                });
+                };
             },
         }
     }

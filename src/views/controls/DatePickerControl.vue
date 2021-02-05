@@ -181,7 +181,8 @@
             })
         },
 
-        beforeDestroy() {
+        /// beforeDestroy() {
+        beforeUnmount() {
             this.datepicker.destroy()
         },
 
